@@ -1,0 +1,8 @@
+<form action="{% url 'notes:add-task' todo_list_id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <label for="task-field">Enter the Task :</label>
+        <input type="text" name="task" id="task-field">
+    </fieldset>
+    <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,18 @@
+<h1>Title : {{note.title}}</h1>
+<h3>creation date : {{note.created_at}}</h3>
+<h2>Message : </h2>
+<h2>{{note.content}}</h2>
+
+<form action="{% url 'notes:edit-note' note.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <label for="edit-option">Select whether to edit title, content, or both
+        </label>
+        <select id="edit-option" name="edit-opt">
+            <option value="title">Title</option>
+            <option value="content">Content</option>
+            <option value="both">Both</option>
+        </select>
+    </fieldset>
+    <input type="submit" value="Submit">
+</form>

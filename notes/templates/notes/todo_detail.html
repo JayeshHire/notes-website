@@ -1,0 +1,22 @@
+<h1>Title : {{todo.title}} </h1>
+<h2>Tasks :</h2>
+
+{% for task in todo.todo_set.all %}
+{% if task.status == False %}
+<ul style="list-style-type:square;">
+    <li>
+    <h3> Task : {{task.task}} </h3>
+    </li>
+</ul>
+{% else %}
+<ul style="list-style-type:none;">
+    <li>
+    <h3> Task : {{task.task}} </h3>
+    </li>
+</ul>
+{% endif %}
+{% endfor %}
+<a href="{% url 'notes:add-task' todo.id %}">Add Task </a> <br>
+<a href="{% url 'notes:mark-task-completed' todo.id%}">Mark Task as completed</a> <br>
+<a href="{% url 'notes:task_deletion' todo.id %}">Delete Completed task</a> <br>
+<a href="{% url 'notes:todo_list_deletion' todo.id %}">Delete Todo List</a>

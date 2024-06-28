@@ -1,0 +1,14 @@
+<h1>Title : {{note.title}}</h1>
+<h3>creation date : {{note.created_at}}</h3>
+<h2>Message : </h2>
+<h2>{{note.content}}</h2>
+
+<form action="{% url 'notes:edit-note-content' note.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <label for="content-edit">Edit Content
+        </label>
+        <input type="text" name="content" id="content-edit">
+    </fieldset>
+    <input type="submit" value="Submit">
+</form>

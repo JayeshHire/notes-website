@@ -1,0 +1,16 @@
+<h1>
+    Note Details
+</h1>
+{% if note %}
+<h3> Note Title : {{note.title}}</h3>
+<h3>Date of creation : {{note.created_at}}</h3>
+<h4>Message :</h4>
+<p>
+    {{note.content}}
+</p>
+{% endif %}
+
+<ul>
+    <li><a href="{% url 'notes:delete-note' note.id %}">Delete Note</a></li>
+    <li><a href="{% url 'notes:edit-note' note.id %}">Edit Note Title</a></li>
+</ul>

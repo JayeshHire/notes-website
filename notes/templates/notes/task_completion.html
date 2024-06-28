@@ -1,0 +1,18 @@
+<h1>
+    {{todo_list.title}}
+</h1>
+
+<form action="{% url 'notes:mark-task-completed' todo_list.id %}" method="post">
+    {% csrf_token %}
+    <label for="task-list">
+        Select Completed task
+    </label>
+    <select name="task" id="task-list" multiple="multiple">
+        {% for todo in todo_list.todo_set.all %}
+        {% if todo.status == False %}
+        <option value="{{todo.id}}" > {{todo.task}}</option>
+        {% endif %}
+        {% endfor %}
+    </select> <br> <br>
+    <input type="submit" value="Submit">
+</form>

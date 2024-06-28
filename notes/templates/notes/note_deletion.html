@@ -1,0 +1,24 @@
+<h1>Title : {{note.title}}</h1>
+<h3>creation date : {{note.created_at}}</h3>
+<h2>Message : </h2>
+<h2>{{note.content}}</h2>
+
+<h2> Do You want to delete this note ?</h2>
+
+<form action="{% url 'notes:delete-note' note.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <label for="deletion-op">
+            Select Whether to delete or not ( 'YES' to delete this note and 'NO' to avoid deletion )
+        </label>
+        <select id="deletion-op" name="surety">
+            <option value="YES">
+                YES
+            </option>
+            <option value="NO">
+                NO
+            </option>
+        </select>
+    </fieldset>
+    <input type="submit" value="Submit">
+</form>

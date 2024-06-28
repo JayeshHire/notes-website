@@ -1,0 +1,13 @@
+<form action="{% url 'notes:form-note' %}" method="post">
+    {% csrf_token %}
+
+    <fieldset>
+        <label for="title-box" > Enter title of Note :</label>
+        <input type="text" name="title" id="title-box">
+    </fieldset>
+    <fieldset>
+        <label for="content-box" > Enter content of Note :</label>
+        <input type="text" name="content" id="content-box">
+    </fieldset>
+    <input type="submit" value="Submit">
+</form>

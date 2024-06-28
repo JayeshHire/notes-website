@@ -1,0 +1,22 @@
+<h1>
+{{todo_list.title}}
+</h1>
+<form action="{% url 'notes:task_deletion' todo_list.id%}" method="post">
+{% csrf_token %}
+    <fieldset>
+        <label for="task-deletion">
+            Select task to be Deleted ( only tasks which are completed can be deleted )
+        </label>
+            <select id="task-deletion" name="task" multiple>
+                {% for todo in todo_list.todo_set.all %}
+                {% if todo.status == True %}
+                <option value="{{todo.id}}">
+                    {{todo.task}}
+                </option>
+                {% endif %}
+                {% endfor %}
+            </select>
+
+    </fieldset>
+    <input type="submit" value="Submit">
+</form>

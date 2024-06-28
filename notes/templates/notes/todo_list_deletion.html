@@ -1,0 +1,28 @@
+<h1>
+    {{todo_list.title}}
+</h1>
+{% for todo in todo_list.todo_set.all %}
+{% if todo.status == True %}
+<ul style="list-style-type: none">
+    <li>
+        {{todo.task}}
+    </li>
+</ul>
+{% else %}
+<ul style="list-style-type: square">
+    <li>
+        {{todo.task}}
+    </li>
+</ul>
+{%endif%}
+{%endfor%}
+
+<form action="{% url 'notes:todo_list_deletion' todo_list.id%}" method="post">
+    {% csrf_token %}
+    <h3> Are You Sure You want to delete this Todo List ?</h3>
+    <select name="surety" >
+        <option value="YES">YES</option>
+        <option value="NO">NO</option>
+    </select>
+    <input type="submit" value="Submit" >
+</form>

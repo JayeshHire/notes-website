@@ -1,0 +1,22 @@
+<h1>
+    List of all the notes
+</h1>
+{% if message %}
+<h3><strong>{{message}}</strong></h3>
+{% endif %}
+<ul>
+    {% for note in note_list %}
+    <a href="{% url 'notes:detail' note.id %}">
+        <li>
+            <p><strong>Note title : </strong> {{note.title}} </p>
+            <p><strong>Date of creation : </strong> {{note.created_at}} </p>
+        </li>
+    </a>
+
+    {% endfor %}
+</ul>
+
+<h3>Operation on Notes : </h3>
+<ul>
+    <li><a href="{% url 'notes:create-note' %}">Create Note </a></li>
+</ul>
