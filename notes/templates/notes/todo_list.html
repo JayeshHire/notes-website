@@ -3,7 +3,7 @@
 </h1>
 <ul>
 {% for todo in todo_list %}
-    <a href="{% url 'notes:todo-detail' todo.id %}">
+    <a href="{% url 'notes:user-todo-detail' todo.id %}">
         <li>
             <h3> Title : {{todo.title}} </h3>
             <h3> created at : {{todo.created_at}} </h3>

@@ -1,0 +1,14 @@
+<h1> Login for existing user</h1>
+
+<form action="{% url 'notes:login' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <label for="user-name">Username :</label>
+        <input type="text" name="username" id="user-name"><br>
+        <label for="user-pass">Password : </label>
+        <input type="password" name="password" id="user-pass"><br>
+
+    </fieldset>
+    <input type="submit" value="Login" > <br>
+    <h4 style="color:red">{{message}}</h4>
+</form>

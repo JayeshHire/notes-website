@@ -6,7 +6,7 @@
 {% endif %}
 <ul>
     {% for note in note_list %}
-    <a href="{% url 'notes:detail' note.id %}">
+    <a href="{% url 'notes:note-detail' note.id %}">
         <li>
             <p><strong>Note title : </strong> {{note.title}} </p>
             <p><strong>Date of creation : </strong> {{note.created_at}} </p>

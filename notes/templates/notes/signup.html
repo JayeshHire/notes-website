@@ -1,0 +1,17 @@
+<h1> Signing in for new users </h1>
+
+<form action="{% url 'notes:signup' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <label for="user-name" > Username :</label>
+        <input type="text" name="username" id="user-name"> <br>
+        <label for="user-email">Email :</label>
+        <input type="email" name="email" id="user-email"> <br>
+        <label for="user-password">Password : </label>
+        <input type="password" name="password" id="user-password"> <br>
+        <label for="confirm-password">Confirm Password :</label>
+        <input type="password" name="confirm_password" id="confirm-password"><br>
+    </fieldset>
+    <input type="submit" value="Signup"><br>
+    <h4 style="color: red">{{message}}</h4>
+</form>
