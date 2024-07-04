@@ -27,7 +27,7 @@ def user_signup(request):
             return render(request, "notes/signup.html", context=context)
         user = User.objects.create_user(username=username, email=email, password=password)
         request.session["username"] = username
-        return HttpResponseRedirect(reverse("notes:index"))
+        return HttpResponseRedirect(reverse("notes:note-list"))
 
     context = {
         "message": ""

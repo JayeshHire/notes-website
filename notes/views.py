@@ -176,7 +176,7 @@ def edit_note_both(request, note_id):
         note.title = new_title
         note.content = new_content
         note.save()
-        return HttpResponseRedirect(reverse("notes:detail", args=(note_id,)))
+        return HttpResponseRedirect(reverse("notes:note-detail", args=(note_id,)))
 
     context = {
         "note": note
@@ -234,7 +234,7 @@ def add_task(request, todo_list_id):
     if request.method == 'POST':
         task = request.POST['task']
         todo = todolist.todo_set.create(task=task)
-        return HttpResponseRedirect(reverse("notes:todo-detail", args=(todo_list_id,)))
+        return HttpResponseRedirect(reverse("notes:user-todo-detail", args=(todo_list_id,)))
     context = {
         "todo_list_id": todo_list_id
     }
@@ -258,10 +258,10 @@ def mark_task_as_completed(request, todo_list_id):
         todoList = TodoList.objects.get(pk=todo_list_id)
         owner_username = todoList.owner.username
         if owner_username != request.session["username"]:
-            return HttpResponseRedirect(reverse("notes:todo-detail", args=(todo_list_id,)))
+            return HttpResponseRedirect(reverse("notes:user-todo-detail", args=(todo_list_id,)))
         task.status = True
         task.save()
-        return HttpResponseRedirect(reverse("notes:todo-detail", args=(todo_list_id,)))
+        return HttpResponseRedirect(reverse("notes:user-todo-detail", args=(todo_list_id,)))
 
     todo_list = TodoList.objects.get(pk=todo_list_id)
     context = {
@@ -285,7 +285,7 @@ def delete_task(request, todo_list_id):
         #     task.delete()
         task = Todo.objects.get(pk=task_ids)
         task.delete()
-        return HttpResponseRedirect(reverse("notes:todo-detail", args=(todo_list_id,)))
+        return HttpResponseRedirect(reverse("notes:user-todo-detail", args=(todo_list_id,)))
 
     todo_list = TodoList.objects.get(pk=todo_list_id)
     context = {
@@ -306,7 +306,7 @@ def delete_todo_list(request, todo_list_id):
         if yes_or_no == 'YES':
             todo_list = TodoList.objects.get(pk=todo_list_id)
             todo_list.delete()
-        return HttpResponseRedirect(reverse("notes:todo-list"))
+        return HttpResponseRedirect(reverse("notes:todo-list-index"))
 
     todo_list = TodoList.objects.get(pk=todo_list_id)
     context = {
