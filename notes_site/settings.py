@@ -76,12 +76,15 @@ WSGI_APPLICATION = 'notes_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'notesdb',
-        'USER':'postgres',
-        'PASSWORD':'root',
-        'HOST':'localhost',
-        'PORT':'5432'
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'notesdb',
+        # 'USER':'postgres',
+        # 'PASSWORD':'root',
+        # 'HOST':'localhost',
+        # 'PORT':'5432'
+        # settings for deployed application
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
