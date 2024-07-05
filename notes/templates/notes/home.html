@@ -1,0 +1,10 @@
+<h3>
+    <a href="{% url 'notes:note-list'%}">Notes</a>
+</h3>
+<h3>
+    <a href="{%url 'notes:todo-list-index' %}">Todo Lists </a>
+</h3>
+
+{% if message %}
+<h4>{{message}}</h4>
+{% endif %}

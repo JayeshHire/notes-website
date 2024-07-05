@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.utils.decorators import classonlymethod
 from django.views import generic
+from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST, HTTP_500_INTERNAL_SERVER_ERROR
+
 from .models import Note, TodoList, Todo
 from . import user_view
 from django.contrib.auth.models import User
@@ -33,6 +35,23 @@ class TodoListDetailView(generic.DetailView):
     model = TodoList
     context_object_name = "todo"
     template_name = "notes/todo_detail.html"
+
+
+# default routing view for 400
+# @user_view.authorized
+def default_routing_for_404(request, exception):
+    context = {
+        "message": "404 bad request"
+    }
+    return render(request, "notes/home.html",  context=context)
+
+
+# default routing view for 500 server error
+def default_routing_for_500(request, exception=None):
+    context = {
+        "message": "500 internal server error"
+    }
+    return render(request, "notes/home.html", status=HTTP_500_INTERNAL_SERVER_ERROR, context=context)
 
 
 # get note list for user

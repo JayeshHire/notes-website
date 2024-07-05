@@ -3,10 +3,13 @@ from . import views, view2, user_view
 
 app_name = "notes"
 
+
+
 urlpatterns = [
     path("test/t1", view2.t1, name="test1"),
     path("test/t2", view2.t2, name="test2"),
     path("test/t3", view2.t3, name="test3"),
+    # path("", views.test, name="test4"),
     path("user/signup", user_view.user_signup, name="signup"),
     path("user/login", user_view.login, name="login"),
     path("user/logout", user_view.logout, name="logout"),

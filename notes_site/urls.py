@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('note/',include('notes.urls')),
+    path('note/', include('notes.urls')),
     path('admin/', admin.site.urls),
 ]
+
+handler404 = "notes.views.default_routing_for_404"
+handler500 = "notes.views.default_routing_for_500"
